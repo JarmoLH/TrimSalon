@@ -1,4 +1,10 @@
 <?php
+/**
+ * show treatment dropdown
+ *
+ * @return void
+ */
+function showtreatement(): void {
 $connection = mysqli_connect('localhost', 'root', '', 'trim_salon');
 
 if ($connection->connect_error) {
@@ -19,3 +25,6 @@ if ($result->num_rows > 0) {
 }
 }
 echo '</select><br>';
+}
+
+showtreatement();

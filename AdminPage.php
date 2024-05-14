@@ -20,7 +20,8 @@ if (isset($_SESSION["login_success"])) {
 <a href="LogOut.php">Log Out</a><br><br>
    
    <?php
-        include_once "overview/AdminOverview.php"
+        include_once "overview/AdminOverview.php";
+        showAppointments($connection);
     ?>
     
 </body>
