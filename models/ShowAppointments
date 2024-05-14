@@ -1,0 +1,51 @@
+<?php
+require_once "Database.php";
+
+/**
+ * Show appointments on admin page
+ */
+class AppointmentManager
+{
+    private $db;
+
+    public function __construct()
+    {
+        $this->db = ConnectDb::getInstance()->getConnection();
+    }
+
+    public function getAppointments(): array|false
+    {
+        $stmt = $this->db->prepare(
+                                    "SELECT * FROM `customers`
+                                     JOIN `huisdier` ON `customers`.`ID` = `huisdier`.`owner_id`
+                                     JOIN `appointments` ON `huisdier`.`id_pet` = `appointments`.`pet_id`"
+                                    );
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function showAppointments(): void
+    {
+        $result = $this->getAppointments();
+
+        if ($result !== false) {
+            foreach ($result as $row) {
+                echo "Naam eigenaar: " . $row['name_owner'] . '<br>';
+                echo "E-mail: " . $row['E-mail'] . '<br>';
+                echo "Telefoonnummer: " . $row['phone_number'] . '<br>';
+                echo "Woonplaats: " . $row['residence'] . '<br>';
+                echo "Straat: " . $row['adress'] . " " . $row['house_number'] . '<br>';
+                echo "Postcode: " . $row['postcode'] . '<br>';
+                echo "Naam huisdier: " . $row['name_pet'] . '<br>';
+                echo "Huisdier soort: " . $row['type'] . '<br>';
+                echo "Huisdier behandeling: " . $row['treatment'] . '<br>';
+                echo "Datum: " . $row['date'] . '<br>';
+                echo "Tijd: " . $row['time'] . '<br><br>';
+            }
+        }
+    }
+}
+
+// execute and show
+$appointmentManager = new AppointmentManager();
+$appointmentManager->showAppointments();

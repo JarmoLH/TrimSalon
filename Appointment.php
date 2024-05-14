@@ -5,6 +5,11 @@ if (isset($_SESSION["Appointment_created"])) {
     echo '<script>alert("' . $_SESSION["Appointment_created"] . '");</script>';
     unset($_SESSION["Appointment_created"]);
 }
+
+if (isset($_SESSION["Appointment_failed"])) {
+    echo '<script>alert("' . $_SESSION["Appointment_failed"] . '");</script>';
+    unset($_SESSION["Appointment_failed"]);
+}
 ?>
 
 <!DOCTYPE html>
@@ -22,8 +27,8 @@ if (isset($_SESSION["Appointment_created"])) {
     <form action="Processing.php" method="post">
 
     <?php
-    include_once "drop_down/species.php";
-    include_once "drop_down/treatment.php";
+    include_once "models/SpeciesSelector.php";
+    include_once "models/TreatmentSelector.php";
     include_once "html/appointment.php";
     include_once "html/pet.php";
     include_once 'html/owner.php';
