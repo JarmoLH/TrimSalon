@@ -13,6 +13,11 @@ class AppointmentManager
         $this->db = ConnectDb::getInstance()->getConnection();
     }
 
+    /**
+     * collect all customer, pet and appointment data
+     *
+     * @return array|false
+     */
     public function getAppointments(): array|false
     {
         $stmt = $this->db->prepare(
@@ -24,6 +29,11 @@ class AppointmentManager
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    /**
+     * Show all customer, pet and appointment data
+     *
+     * @return void
+     */
     public function showAppointments(): void
     {
         $result = $this->getAppointments();

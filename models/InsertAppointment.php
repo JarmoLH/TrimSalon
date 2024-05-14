@@ -1,12 +1,18 @@
 <?php
 require_once "Database.php";
 
-/**
- * Insert appointment into database
- */
 class InsertAppointment
 {
-    public function saveAppointment($type_treatment, $date, $time, $petId)
+    /**
+     * Save appointment data in database
+     *
+     * @param [type] $type_treatment
+     * @param [type] $date
+     * @param [type] $time
+     * @param [type] $petId
+     * @return boolean
+     */
+    public function saveAppointment($type_treatment, $date, $time, $petId): bool
     {
         $appointmentinfo = [
             $type_treatment,

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Singleton databse connectie
+ * Singleton database connection
  */
 class ConnectDb
 {
@@ -13,6 +13,9 @@ class ConnectDb
     private $pass = "";
     private $dbname = "trim_salon";
 
+    /**
+     * Construct database connection
+     */
     protected function __construct()
     {
         $this->conn = new PDO("mysql:host={$this->host};
@@ -20,7 +23,12 @@ class ConnectDb
         array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"));
     }
 
-    public static function getInstance()
+    /**
+     * if connection established, use established connection, else make connection
+     *
+     * @return ConnectDb
+     */
+    public static function getInstance(): ConnectDb
     {
         if (!self::$instance) {
             self::$instance = new ConnectDb();
@@ -28,7 +36,12 @@ class ConnectDb
         return self::$instance;
     }
 
-    public function getConnection()
+    /**
+     * return connection
+     *
+     * @return PDO
+     */
+    public function getConnection(): PDO
     {
         return $this->conn;
     }

@@ -6,7 +6,19 @@ require_once "Database.php";
  */
 class InsertOwner
 {
-    public function saveOwner($name_owner, $phone_number, $email, $residence, $adress, $home_number, $postcode)
+    /**
+     * save owner data in database
+     *
+     * @param [type] $name_owner
+     * @param [type] $phone_number
+     * @param [type] $email
+     * @param [type] $residence
+     * @param [type] $adress
+     * @param [type] $home_number
+     * @param [type] $postcode
+     * @return bool
+     */
+    public function saveOwner($name_owner, $phone_number, $email, $residence, $adress, $home_number, $postcode): bool
     {
         $ownerinfo = [
             $name_owner,

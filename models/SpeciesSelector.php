@@ -14,6 +14,11 @@ class SpeciesSelector
         $this->db = ConnectDb::getInstance()->getConnection();
     }
 
+    /**
+     * Take data and show dropdown selector for species pet
+     *
+     * @return void
+     */
     public function showAnimal()
     {
         $stmt = $this->db->prepare("SELECT * FROM `species`");

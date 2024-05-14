@@ -7,7 +7,15 @@ require_once "Database.php";
  */
 class InsertPet
 {
-    public function savePet($type_pet, $name_pet, $ownerId)
+    /**
+     * save pet data in database
+     *
+     * @param [type] $type_pet
+     * @param [type] $name_pet
+     * @param [type] $ownerId
+     * @return void
+     */
+    public function savePet($type_pet, $name_pet, $ownerId): bool
     {
         $petinfo = [
             $type_pet,

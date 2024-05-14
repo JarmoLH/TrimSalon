@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 require_once "Database.php";
 /**
@@ -13,6 +13,11 @@ class TreatmentSelector
         $this->db = ConnectDb::getInstance()->getConnection();
     }
 
+    /**
+     * get data and show dropdown selector for type treatments
+     *
+     * @return void
+     */
     public function showTreatment()
     {
         $stmt = $this->db->prepare("SELECT * FROM `treatment`");
